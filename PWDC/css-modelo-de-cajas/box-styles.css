@@ -1,0 +1,26 @@
+h1,
+p,
+div{
+    background-color: #dde0e3;
+}
+h1{
+    margin: 100px;
+    padding: 10px;
+}
+p{
+    margin: 50px;
+    padding: 50px;
+}
+div{
+    margin: 50px;
+
+}
+em,
+strong,
+span{
+    background-color: #b2d6ff;
+}
+em{
+    margin: 100px;
+    padding: 100px;
+}

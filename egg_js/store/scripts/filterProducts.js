@@ -1,0 +1,1 @@
+searchSelector.addEventListener("keyup", event=>captureText(event));

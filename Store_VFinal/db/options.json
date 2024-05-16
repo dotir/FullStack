@@ -1,0 +1,30 @@
+{
+    "navOptions": [
+      {
+        "label": "Inicio",
+        "route": "/"
+      },
+      {
+        "label": "Productos",
+        "route": "/productos"
+      },
+      {
+        "label": "Sobre Nosotros",
+        "route": "/sobre-nosotros"
+      }
+    ],
+    "footerOptions": [
+      {
+        "label": "Contáctanos",
+        "route": "/contacto"
+      },
+      {
+        "label": "Políticas",
+        "route": "/politicas"
+      },
+      {
+        "label": "Términos y Condiciones",
+        "route": "/terminos-y-condiciones"
+      }
+    ]
+  }

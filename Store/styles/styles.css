@@ -1,0 +1,261 @@
+/* cuerpo */
+body,
+html {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+header {
+    background-color: #ff3b3c;
+    /* Ejemplo de color */
+    height: 152px;
+}
+
+.search {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.search .form {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.search .form input {
+    height: 62px;
+    border-radius: 14px;
+    border: none;
+    width: 505px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.search .social ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search .social ul li {
+    padding: 0 10px;
+}
+
+.nav {
+    padding: 10px 0;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li a {
+    color: white;
+    font-weight: 700;
+    text-align: left;
+    text-decoration: none;
+}
+
+.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+section {
+    height: 340px;
+}
+
+main {
+    height: auto;
+    padding: 50px;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    height: inherit;
+    min-height: inherit;
+}
+
+/* Bloque de productos */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.product-container a {
+    text-decoration: none;
+    color: initial;
+}
+
+/* Card de producto */
+.product-card {
+    background-color: #f0f0f0;
+    border-radius: 14px;
+    width: auto;
+    overflow: hidden;
+}
+
+/* bloque productos */
+.product-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.product-title {
+    font-size: 18px;
+    font-weight: 950;
+    color: #333;
+}
+
+.product-description {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+}
+
+.product-tax-policy {
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 5px;
+}
+
+.product-price-block {
+    display: flex;
+    margin: 5px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-price-block .price {
+    font-size: 22px;
+    font-weight: 700;
+    flex: 1;
+}
+
+.product-price-block .discount {
+    font-size: 12px;
+    font-weight: 700;
+    color: #428f13;
+}
+
+/* Hero section */
+section#hero {
+    height: 340px;
+    background: url("../assets/hero_bg.png");
+    background-size: cover;
+    background-position: top center;
+}
+
+section#hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.title-container span {
+    display: block;
+    color: white;
+    font-weight: 700;
+}
+
+.title-container span:first-child {
+    font-size: 40px;
+}
+
+.title-container span:last-child {
+    font-size: 100px;
+    line-height: 80px;
+}
+
+/* Footer */
+footer {
+    /* Hexadecimal color code*/
+    min-height: 368px;
+    background-color: #7525a7;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.columns-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.columns-container .col ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.columns-container .col ul li {
+    padding: 5px 0;
+}
+
+.columns-container .col ul li.col-main-item {
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.columns-container .col ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.copyright {
+    border-top: 1px solid #ba53fb;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    padding: 30px 0;
+    box-sizing: border-box;
+}
+
+
+/* vista de tableta */
+@media (max-width: 768px) {
+    .search .form input {
+        width: 300px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:425px) {
+    .container {
+        width: 100%;
+    }
+
+    .product-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

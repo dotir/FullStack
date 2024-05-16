@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera web</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header id="encabezado">
+            <h1 class="logo"><a href="" class="fuente-acento">Mi Web</a></h1>
+            <!-- <a href="index.html"><i class="fa-solid fa-heart"></i></a> -->
+            <label for="check" class="checkbtn">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+            <nav class="navbar">    
+                <ul class="menu">   
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#acerca">Acerca de mi</a></li>
+                    <li><a href="#trabajos">Trabajos</a></li>
+                    <li><a href="#servicios">Servicio</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main id="seccion-principal">
+            <section class="seccion-1">
+                <div class="acerca-de">
+                    <h2 >Acerca de mi</h2>
+                    <p>¡Bienvenido a mi pagina! Aqui, aprenderas mas sobre mi.</p>
+                    <p>Me llamo Irving, naci en Arequipa y vivo en La Joya. Me gusta ver peliculas y jugar juegos</p>
+                </div>
+                <div class="acerca-imagen">
+                    <img src="img/perfil.jpg" alt="">
+                </div>
+            </section>
+            <section class="seccion-2">
+                <img src="img/paisaje.jpg" alt="imagen de carrusel">
+            </section>
+            <section class="seccion-3">
+                <h2>Trabajos</h2>
+                <div class="trabajos">
+                    <div class="trabajo-container">
+                        <div class="trabajo">
+                            <div class="image-container" >
+                                <img src="img/trabajo1.jpeg" alt="">
+                            </div>
+                            <span class="text">Trabajo 1</span>
+                        </div>
+                    </div>
+                    <div class="trabajo-container">
+                        <div class="trabajo">
+                            <div class="image-container">
+                                <img src="img/trabajo2.jpeg" alt="">
+                            </div>
+                            <span class="text">Trabajo 2</span>
+                        </div>
+                    </div>
+                    <div class="trabajo-container">
+                        <div class="trabajo">
+                            <div class="image-container">
+                                <img src="img/trabajo1.jpg" alt="">
+                            </div>
+                            <span class="text">Trabajo 3</span>
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </section>
+            <section class="seccion-4">
+                <h2>Contacto</h2>
+                <form action="" method="get" class="formulario" id="form">
+                    <div class="form-row">
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" name="nombre" type="text" />
+                    </div>
+                    <div class="form-row">
+                    <label for="email">Email</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="pepe@gmail.com"
+                        required
+                    />
+                    </div>
+                    <div class="form-row">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <button type="submit" id="submit">Enviar</button>
+                    </div>
+                    <p class="alertas" id="alertas"></p>
+                </form>
+            </section>
+        </main>
+        <footer id="contacto">
+            <div id="footer">
+                <a href="">
+                    <i class="fa-solid fa-heart fixed" style="color: #ebcb00;"></i>
+                </a>
+                <h3 class="fuente-acento">Redes Sociales</h3>
+                <nav>
+                    <ul>
+                        <li><a href="">Instagram</a></li>
+                        <li><a href="">Facebook</a></li>
+                        <li><a href="">Twitter</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

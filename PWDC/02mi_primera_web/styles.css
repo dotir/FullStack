@@ -1,0 +1,385 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+  }
+  
+  body {
+    background-color: #eeeeee;
+  }
+  /* ESTILOS GENERALES */
+  
+  .fuente-clara {
+    color: #eeeeee;
+  }
+  
+  .fuente-oscura {
+    color: #22211f;
+  }
+  
+  .fuente-acento {
+    color: #b59a61;
+  }
+  /* navegador */
+  nav ul li {
+    font-size: 14px;
+    line-height: 30px;
+    text-transform: uppercase;
+  }
+  nav ul li a {
+    color: #eeeeee;
+  }
+  /* container 1 */
+  .seccion-1{
+    margin-top: 100px;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/* acerca de */
+
+/* container 2 */
+.seccion-2 img{
+    width: 100%;
+}
+.trabajos{
+    display: flex;
+    flex-wrap: wrap;
+}
+/* container 3 */
+.seccion-3{
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    background: #e6e6e6;
+}
+.seccion-3 h2{
+    align-self: start;
+    padding: 1em;
+    color: #CD853F;
+    font-size: 2em;
+}
+/* .seccion-3 img{
+    width: 100%;
+    padding: 1em;
+} */
+/* cards */
+.trabajo-container{
+    margin:5px;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.trabajo{
+    border: 4px dotted teal;
+    border-radius: 5%;
+    padding: 5px;
+    /* height: 400px; */
+    /* max-width: 500px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.image-container{
+    border: 4px dotted teal;
+    border-radius: 5%;
+    width: 80%;
+    /* height: 60%; */
+}
+.text{
+    font-size: 32px;
+    width: 80%;
+    text-align: center;
+}
+/* Container 4 */
+.seccion-4{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+.seccion-4 h2{
+    align-self: center;
+    padding: 1em;
+    color: #CD853F;
+    font-size: 2em;
+
+}
+  /* ------------- Formulario ------------- */
+  
+  .formulario {
+    /* background-color: #f6f7f8; */
+    border: 1px solid #d6d9dc;
+    border-radius: 3px;
+    width: 40%;
+    padding: 50px;
+    margin: 30px 0 40px 0;
+  }
+ /* ------------- Campos del Formulario ------------- */
+
+ .form-row {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.form-row input[type="text"] {
+  background-color: #bdbdbd;
+  border: 0;
+  border-radius: 6px;
+  width: 100%;
+  padding: 7px;
+  font-size: 14px;
+}
+.form-row input[type="email"]{
+  background-color: #bdbdbd;
+  border: 0;
+  border-radius: 6px;
+  width: 100%;
+  padding: 7px;
+  font-size: 14px;
+}
+.form-row label {
+  margin-bottom: 3px;
+  text-align: initial;
+}
+.form-row textarea {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  background-color: #bdbdbd;
+  border: 0;
+  border-radius: 6px;
+  min-height: 200px;
+  margin-bottom: 10px;
+  padding: 7px;
+  resize: none;  
+  width: 100%;
+}
+.form-row button {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #5995da;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+.form-row button:hover {
+  background-color: #76aeed;
+}
+.form-row button:active {
+  background-color: #407fc7;
+}
+
+/* corazon flotante */
+a i.fa-solid.fa-heart.fixed{
+    position: fixed;
+    bottom: 22px;
+    right: 39px;
+}
+.fa-solid, .fas {
+    font-weight: 900;
+}
+
+  /* ENCABEZADO */
+  
+  header {
+    background-color: rgba(34, 33, 31, 0.85);
+    width: 100%;
+    display: flex;
+    background-color: rgba(34, 33, 31, 0.85);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  header a i{
+    color: white;
+    font-size: 3em;
+    padding: 0.5em;
+}
+  
+  .logo {
+    display: inline-block;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 50px;
+    font-weight: bold;
+  }
+  
+  header {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+  }
+  
+  header nav {
+    height: 80px;
+    float: right;
+  }
+  
+  nav ul.menu {
+    float: right;
+  }
+  
+  nav ul.menu li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  
+  nav ul.menu li a {
+    color: #eee;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 7px 7px;
+  }
+  
+  /* MENU */
+  
+  .checkbtn {
+    font-size: 25px;
+    color: rgb(186, 5, 5);
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  /* Footer */
+    footer{
+    background-color: #22211f;
+    width: 100%;
+    }
+    footer a{
+        text-decoration: none;
+    }
+    #footer{
+        padding: 1em;
+    }
+    #footer h3{
+        color: #b59a61;
+    }
+    #footer nav ul li a{
+        color: #eeeeee;
+    }
+
+  /* MEDIA QUERIES */
+  
+  /* Estilos para pantallas más pequeñas (hasta 768px) */
+  @media (max-width: 768px) {
+    /* Aquí puedes escribir los estilos que se aplicarán en pantallas más pequeñas */
+    .trabajo-container{
+        width: 95%;
+    }
+    .acerca-de{
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+        align-items: center;
+    }
+    header {
+      background-color: burlywood;
+    }
+    .checkbtn {
+      display: block;
+    }
+    .navbar {
+      height: 0vh;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: #2c3e50;
+      text-align: center;
+  
+      transition: all 0.5s;
+      overflow: hidden;
+    }
+  
+    .navbar ul.menu {
+      float: none;
+      display: block;
+      width: 174px;
+      margin: 0 auto;
+      opacity: 0;
+    }
+  
+    .navbar ul.menu li a:hover {
+      color: #b59a61;
+    }
+    /* ACTIVE */
+    .navbar.active {
+      height: 100vh;
+    }
+  
+    .navbar.active ul.menu {
+      opacity: 1;
+    }
+    .formulario {
+      width: 100%;
+    }
+    .seccion-2 img{
+      width: 100%;
+    }
+    .acerca-imagen img{
+      width: 100%;
+    
+    }
+    .seccion-3 img{
+      width: 100%;
+      padding: 1em;
+  }
+  }
+   /* ------------- Para Pantallas de más de 700px ------------- */
+@media only screen and (min-width: 700px) {
+  .form-header {
+    padding: 50px;
+  }
+  .form-row {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .form-row input[type="text"] {
+    width: 250px;
+    height: initial;
+  }
+  .form-row input[type="email"]{
+      width: 250px;
+
+  }
+  .form-row label {
+    text-align: right;
+    width: 120px;
+    margin-top: 7px;
+    padding-right: 20px;
+  }
+  .form-row textarea {
+      width: 250px;
+  }
+  .form-row button {
+      margin-left: 120px;
+  }
+  .seccion-2 img{
+    width: 100%;
+  }
+  .acerca-imagen img{
+    width: 100%;
+  } 
+  .seccion-3 img{
+    width: 100%;
+    padding: 1em;
+}
+}
