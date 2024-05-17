@@ -1,14 +1,15 @@
 function printDetails(id) {
-  const product = products.find((each) => each.id === id);
+  products = JSON.parse(localStorage.getItem("products"));
+  let product = products.find((each) => each.id === id);
   const detailsTemplate = `
     <section class="product-images-block">
     <div class="product-images">
       ${product.images
-        .map(
-          (each) =>
-            `<img class="mini-img" src="${each}" alt="${each}" onclick="changeMini(event)" />`
-        )
-        .join("")}
+      .map(
+        (each) =>
+          `<img class="mini-img" src="${each}" alt="${each}" onclick="changeMini(event)" />`
+      )
+      .join("")}
     </div>
     <img class="big-img" id="big-img" src="${product.images[0]}" alt="${product.title}" />
     </section>
@@ -17,12 +18,11 @@ function printDetails(id) {
       <form class="product-selector">
         <fieldset class="product-fieldset">
           <label class="product-label" for="color">Color</label>
-          <select class="product-select" type="text" placeholder="Selecciona un color" id="color-${
-            product.id
-          }">
+          <select class="product-select" type="text" placeholder="Selecciona un color" id="color-${product.id
+    }">
             ${product.colors
-              .map((each) => `<option value=${each}>${each}</option>`)
-              .join("")}
+      .map((each) => `<option value=${each}>${each}</option>`)
+      .join("")}
           </select>
         </fieldset>
       </form>
@@ -61,12 +61,10 @@ function printDetails(id) {
         </ul>
         <div class="checkout-process">
           <div class="top">
-            <input type="number" min="1" value="1" id="quantity-${
-              product.id
-            }" onchange="changeSubtotal(event)"/>          
-            <button type="button" id=${
-              product.id
-            } class="cart-btn" onclick="saveProd(id)">Añadir al Carrito</button>
+            <input type="number" min="1" value="1" id="quantity-${product.id
+    }" onchange="changeSubtotal(event)"/>          
+            <button type="button" id=${product.id
+    } class="cart-btn" onclick="saveProd(id)">Añadir al Carrito</button>
           </div>
         </div>
       </div>

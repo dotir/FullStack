@@ -1,27 +1,45 @@
-const options = [
-  {
-    title: "Ofertas",
-    href: "./index.html",
-    refs: ["Laptops", "Audio", "Auticulares"],
-  },
-  {
-    title: "Cómo comprar",
-    href: "./index.html",
-    refs: ["Formas de pago", "Envios", "Devoluciones"],
-  },
-  {
-    title: "Costos y tarifas",
-    href: "./index.html",
-    refs: ["Impuestos", "Facturación"],
-  },
-  {
-    title: "Mis pedidos",
-    href: "./index.html",
-    refs: ["Pedir nuevamente", "Lista de deseos"],
-  },
-  { title: "Garantía", href: "./index.html", refs: [] },
-];
+// const options = [
+//   {
+//     title: "Ofertas",
+//     href: "./index.html",
+//     refs: ["Laptops", "Audio", "Auticulares"],
+//   },
+//   {
+//     title: "Cómo comprar",
+//     href: "./index.html",
+//     refs: ["Formas de pago", "Envios", "Devoluciones"],
+//   },
+//   {
+//     title: "Costos y tarifas",
+//     href: "./index.html",
+//     refs: ["Impuestos", "Facturación"],
+//   },
+//   {
+//     title: "Mis pedidos",
+//     href: "./index.html",
+//     refs: ["Pedir nuevamente", "Lista de deseos"],
+//   },
+//   { title: "Garantía", href: "./index.html", refs: [] },
+// ];
 
+let options = [];
+
+async function getOptions() {
+  fetch('db/options.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      options = data;
+      printNavBar(data, "navbar");
+      printFooter(options, "footer");
+    })
+    .catch(error => console.error('Error fetching options:', error));
+
+}
 // var isOnline = false;
 
 function hideSearch() {
