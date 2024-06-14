@@ -1,8 +1,8 @@
 import styles from "./OnSale.module.css";
-import Footer from "../../components/Footer/Fotter";
-import Hero from "../../components/Hero/Hero";
-import NavBar from "../../components/NavBar/NavBar";
-import OnSaleCard from "../../components/OnSaleCard/OnSaleCard";
+import Footer from "../../components/Fotter";
+import Hero from "../../components/Hero";
+import NavBar from "../../components/NavBar";
+import OnSaleCard from "../../components/OnSaleCard";
 import products from "../../../public/products.json";
 
 function OnSale() {

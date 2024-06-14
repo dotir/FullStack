@@ -1,4 +1,4 @@
-import NavButton from "../NavButton/NavButton";
+import NavButton from "./NavButton";
 import { Link } from "react-router-dom";
 import logo from "/tiendamia-logo.svg"
 

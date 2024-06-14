@@ -1,18 +1,19 @@
 import { useParams } from "react-router-dom";
-import Footer from "../../components/Footer/Fotter";
-import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Fotter";
+import NavBar from "../../components/NavBar";
 import products from "../../../public/products.json";
-import Hero from "../../components/Hero/Hero";
-import ProductCard from "../../components/ProductCard/ProductCard";
-import Thumbs from "../../components/Thumbs/Thumbs";
-import Description from "../../components/Description/Description";
-import Checkout from "../../components/Checkout/Checkout";
+import Hero from "../../components/Hero";
+import ProductCard from "../../components/ProductCard";
+import Thumbs from "../../components/Thumbs";
+import Description from "../../components/Description";
+import Checkout from "../../components/Checkout";
+import Product from "../../interfaces/Product";
 
 
 function Details() {
   const { id } = useParams();
-  const product = products.find((each) => each.id === id);
-  const onsale = products.filter((each) => each.onsale);
+  const product:Product  = products.find((each) => each.id === id);
+  const onsale: Product[] = products.filter((each) => each.onsale);
   return (
     <>
       <NavBar />
@@ -29,7 +30,7 @@ function Details() {
     <div className="w-[1080px] flex flex-wrap justify-between my-5">
       <h2 className="text-center text-4xl">Week Sale</h2>
       <div id="product-container" className="w-[1080px] flex flex-wrap justify-between">
-        {onsale.map((each) => (
+        {onsale.map((each:Product) => (
           <ProductCard
             key={each.id}
             id={each.id}

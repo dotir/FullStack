@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import Product from "../interfaces/ProductCard";
 
-export default function ProductCard(props) {
-  const { id, title, price, color, image } = props;
+export default function ProductCard({ id, title, price, color, image }: Product) {
   return (
     <Link className="bg-gray-200 text-gray-800 rounded-xl w-64 m-4 no-underline" to={"/details/" + id}>
       <img className="w-full h-64 object-cover object-center rounded-t-xl" src={image} alt={title} />

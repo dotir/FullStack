@@ -1,8 +1,9 @@
-import Footer from "../../components/Footer/Fotter";
-import Hero from "../../components/Hero/Hero";
-import NavBar from "../../components/NavBar/NavBar";
-import ProductCard from "../../components/ProductCard/ProductCard";
+import Footer from "../../components/Fotter";
+import Hero from "../../components/Hero";
+import NavBar from "../../components/NavBar";
+import ProductCard from "../../components/ProductCard";
 import products from "../../../public/products.json";
+import Product from "../../interfaces/ProductCard";
 
 function Home() {
   return (
@@ -11,7 +12,7 @@ function Home() {
       <Hero first="tecnologia" second="renovada" />
       <main>
         <div className="w-[1080px] flex flex-wrap justify-between" id="products">
-          {products.map((each) => (
+          {products.map((each: Product) => (
             <ProductCard
               key={each.id}
               id={each.id}

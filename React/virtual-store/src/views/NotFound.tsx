@@ -1,5 +1,5 @@
-import Footer from "../components/Footer/Fotter";
-import Hero from "../components/Hero/Hero";
+import Footer from "../components/Fotter";
+import Hero from "../components/Hero";
 import NavBar from "../components/NavBar/NavBar";
 
 function NotFound() {
