@@ -1,11 +1,27 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Footer from "../../components/Fotter";
 import Hero from "../../components/Hero";
 import NavBar from "../../components/NavBar";
 import ProductCard from "../../components/ProductCard";
-import products from "../../../public/products.json";
+// import products from "../../../public/products.json";
 import Product from "../../interfaces/ProductCard";
+import { useSelector } from "react-redux";
 
 function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const text = useSelector((store) => store.products.text);
+  useEffect(() => {
+    axios.get("/products.json")
+      .then((res) => {
+        const filterData = res.data.filter((each) =>
+          each.title.toLowerCase().includes(text.toLowerCase())
+        );
+        setProducts(filterData);
+      })
+      .catch((err) => console.log(err));
+  }, [text]);
+  
   return (
     <>
       <NavBar />

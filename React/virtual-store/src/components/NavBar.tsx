@@ -1,8 +1,19 @@
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
 import NavButton from "./NavButton";
 import { Link } from "react-router-dom";
 import logo from "/tiendamia-logo.svg"
+import productsActions from "../store/actions/products";
+
+const { captureText } = productsActions;
+
 
 export default function NavBar() {
+  const text = useRef();
+  const dispatch = useDispatch();
+  const setText = () => {
+    dispatch(captureText({ text: text.current.value }));
+  }
   return (
     <header className="h-[150px] bg-[#ff3b3c] pt-5 pb-0 px-5 flex flex-col items-center">
       <div className="w-[1080px] flex justify-between items-center flex-grow">
@@ -20,6 +31,8 @@ export default function NavBar() {
             type="text"
             placeholder="Search"
             id="search"
+            ref={text}
+            onChange={setText}
           />
         </form>
         <ul className="w-1/3 flex items-center flex-grow justify-end list-none">

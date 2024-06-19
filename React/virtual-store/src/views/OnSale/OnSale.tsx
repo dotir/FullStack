@@ -1,11 +1,20 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styles from "./OnSale.module.css";
 import Footer from "../../components/Fotter";
 import Hero from "../../components/Hero";
 import NavBar from "../../components/NavBar";
 import OnSaleCard from "../../components/OnSaleCard";
-import products from "../../../public/products.json";
+import Product from "../../interfaces/ProductCard";
+// import products from "../../../public/products.json";
 
 function OnSale() {
+  const [products, setProducts] = useState<Product[]>([]);
+  useEffect(() => {
+    axios.get("/products.json")
+       .then((res) => setProducts(res.data))
+       .catch((err) => console.log(err));
+  }, []);
   return (
     <>
       <NavBar />
