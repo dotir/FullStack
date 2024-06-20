@@ -1,6 +1,6 @@
 import Footer from "../components/Fotter";
 import Hero from "../components/Hero";
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../components/NavBar";
 
 function NotFound() {
   return (

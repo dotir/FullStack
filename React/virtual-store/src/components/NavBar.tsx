@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import NavButton from "./NavButton";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "/tiendamia-logo.svg"
 import productsActions from "../store/actions/products";
 
@@ -9,11 +9,15 @@ const { captureText } = productsActions;
 
 
 export default function NavBar() {
+  const textStore = useSelector((store) => store.products.text);
   const text = useRef();
   const dispatch = useDispatch();
   const setText = () => {
     dispatch(captureText({ text: text.current.value }));
   }
+  const location = useLocation();
+  const pathname = location.pathname;
+
   return (
     <header className="h-[150px] bg-[#ff3b3c] pt-5 pb-0 px-5 flex flex-col items-center">
       <div className="w-[1080px] flex justify-between items-center flex-grow">
@@ -26,14 +30,16 @@ export default function NavBar() {
           />
         </Link>
         <form className="w-1/3 flex items-center flex-grow justify-center">
-          <input
+          {pathname === "/" && (<input
             className="h-[30px] rounded-[15px] border-none w-full p-2.5 mx-5 text-base text-center"
             type="text"
             placeholder="Search"
             id="search"
             ref={text}
+            defaultValue={textStore}
             onChange={setText}
-          />
+          />)}
+          
         </form>
         <ul className="w-1/3 flex items-center flex-grow justify-end list-none">
           <li id="facebook" className="h-[50px] w-[50px]">

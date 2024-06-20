@@ -1,7 +1,7 @@
-import Details from "./views/Details/Details";
-import Cart from "./views/Cart/Cart";
-import Home from "./views/Home/Home";
-import OnSale from "./views/OnSale/OnSale";
+import Details from "./views/Details";
+import Cart from "./views/Cart";
+import Home from "./views/Home";
+import OnSale from "./views/OnSale";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/index";

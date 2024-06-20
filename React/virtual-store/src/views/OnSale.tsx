@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import styles from "./OnSale.module.css";
-import Footer from "../../components/Fotter";
-import Hero from "../../components/Hero";
-import NavBar from "../../components/NavBar";
-import OnSaleCard from "../../components/OnSaleCard";
-import Product from "../../interfaces/ProductCard";
+import Footer from "../components/Fotter";
+import Hero from "../components/Hero";
+import NavBar from "../components/NavBar";
+import OnSaleCard from "../components/OnSaleCard";
+import Product from "../interfaces/ProductCard";
 // import products from "../../../public/products.json";
 
 function OnSale() {
@@ -19,8 +18,8 @@ function OnSale() {
     <>
       <NavBar />
       <Hero first="tecnologia" second="renovada" />
-      <main>
-        <div className={styles["product-container"]} id="products">
+      <main className="flex justify-center items-center p-5">
+        <div className="w-auto lg:w-[1080px] flex flex-wrap justify-between" id="products">
           {products.map((each) => (
             <OnSaleCard
               key={each.id}
