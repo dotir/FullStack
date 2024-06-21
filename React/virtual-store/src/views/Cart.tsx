@@ -7,19 +7,25 @@ import CartResume from "../components/CartResume";
 import Product from "../interfaces/Product";
 import { useDispatch } from "react-redux";
 import productsActions from "../store/actions/products";
-const { calculateTotal } = productsActions;
+const { calculateTotal, captureQuantity } = productsActions;
 
 function Cart() {
   const [productsOnCart, setProductsOnCart] = useState<Product[]>([]);
-  // const [totalPrice, setTotalPrice] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
     const products = localStorage.getItem("cart");
     if (products) {
       setProductsOnCart(JSON.parse(products));
-      dispatch(calculateTotal({ products: JSON.parse(products) }));
+      const parsedProducts = JSON.parse(products);
+      dispatch(
+        calculateTotal({ products: parsedProducts})
+      );
+      dispatch(
+        captureQuantity({ products: parsedProducts })
+      );
     }
   }, []);
+
   return (
     <>
       <NavBar />

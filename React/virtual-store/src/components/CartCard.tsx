@@ -4,7 +4,7 @@ import ProductProp from "../interfaces/ProductProp";
 import { useDispatch } from "react-redux";
 import productsActions from "../store/actions/products";
 
-const { calculateTotal } = productsActions;
+const { calculateTotal,captureQuantity } = productsActions;
 
 export default function CartCard(props: ProductProp) {
   const { product } = props;
@@ -22,8 +22,10 @@ export default function CartCard(props: ProductProp) {
       one.units = Number(unitsToBuy.current.value);
       localStorage.setItem("cart", JSON.stringify(products));
       dispatch(calculateTotal({ products }));
+      dispatch(captureQuantity({ products }));
     }
   };
+
   return (
     <article className="w-[340px] lg:w-[680px] md:h-[220px] flex justify-between items-center rounded-md px-[30px] py-[15px] lg:py-[30px] m-[10px] bg-[#f2f2f2]">
       <img
