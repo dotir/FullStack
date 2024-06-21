@@ -5,13 +5,14 @@ import Hero from "../components/Hero";
 import CartCard from "../components/CartCard";
 import CartResume from "../components/CartResume";
 import Product from "../interfaces/Product";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import productsActions from "../store/actions/products";
 const { calculateTotal, captureQuantity } = productsActions;
 
 function Cart() {
   const [productsOnCart, setProductsOnCart] = useState<Product[]>([]);
   const dispatch = useDispatch();
+  const productsState = useSelector((store: any) => store.products);
   useEffect(() => {
     const products = localStorage.getItem("cart");
     if (products) {
@@ -26,6 +27,11 @@ function Cart() {
     }
   }, []);
 
+  useEffect(() => {
+    if (productsState.quantity === 0) {
+      setProductsOnCart([]);
+    }
+  }, [productsState]);
   return (
     <>
       <NavBar />
