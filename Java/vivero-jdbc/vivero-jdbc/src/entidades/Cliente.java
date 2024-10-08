@@ -2,7 +2,7 @@ package entidades;
 
 public class Cliente {
     private int idCliente;
-    private String codigoCliente;
+    private int codigoCliente;
     private String nombreCliente;
     private String nombreContacto;
     private String apellidoContacto;
@@ -16,7 +16,7 @@ public class Cliente {
     private double limiteCredito;
 
     //constructor
-    public Cliente(int idCliente, String codigoCliente, String nombreCliente, String nombreContacto, String apellidoContacto, String telefono, String fax, String ciudad, String region, String pais, String codigoPostal, int idEmpleado, double limiteCredito) {
+    public Cliente(int idCliente, int codigoCliente, String nombreCliente, String nombreContacto, String apellidoContacto, String telefono, String fax, String ciudad, String region, String pais, String codigoPostal, int idEmpleado, double limiteCredito) {
         this.idCliente = idCliente;
         this.codigoCliente = codigoCliente;
         this.nombreCliente = nombreCliente;
@@ -32,7 +32,7 @@ public class Cliente {
         this.limiteCredito = limiteCredito;
     }
     //constructor sin idCliente
-    public Cliente(String codigoCliente, String nombreCliente, String nombreContacto, String apellidoContacto, String telefono, String fax, String ciudad, String region, String pais, String codigoPostal, int idEmpleado, double limiteCredito) {
+    public Cliente(int codigoCliente, String nombreCliente, String nombreContacto, String apellidoContacto, String telefono, String fax, String ciudad, String region, String pais, String codigoPostal, int idEmpleado, double limiteCredito) {
         this.codigoCliente = codigoCliente;
         this.nombreCliente = nombreCliente;
         this.nombreContacto = nombreContacto;
@@ -59,12 +59,12 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public String getCodigoCliente() {
+    public int getCodigoCliente() {
         return codigoCliente;
     }
 
-    public void setCodigoCliente(String codigoCliente) {
-        this.codigoCliente = codigoCliente;
+    public void setCodigoCliente(int i) {
+        this.codigoCliente = i;
     }
 
     public String getNombreCliente() {

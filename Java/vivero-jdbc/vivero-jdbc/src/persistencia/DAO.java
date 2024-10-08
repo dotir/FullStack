@@ -15,10 +15,11 @@ public class DAO {
     private final String PASSWORD = "root";
     private final String DATABASE = "vivero";
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
+
     protected void connectarDataBase() throws SQLException, ClassNotFoundException {
         try {
             Class.forName(DRIVER);
-            String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
+            String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE+"?useSSL=false&serverTimezone=UTC";
             conexion = DriverManager.getConnection(url, USER, PASSWORD);
             System.out.println("Conexión exitosa a la base de datos.");
         } catch (Exception e) {
@@ -62,9 +63,7 @@ public class DAO {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw e;
-        } finally {
-            desconectarDataBase();
-        }
+        } 
         return resultSet;
     }
 }
