@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Pedido {
     private int idPedido;
-    private String codigoPedido;
+    private int codigoPedido;
     private Date fechaPedido;
     private Date fechaEsperada;
     private Date fechaEntrega;
@@ -13,7 +13,7 @@ public class Pedido {
     private int idCliente;
 
     // Constructor completo
-    public Pedido(int idPedido, String codigoPedido, Date fechaPedido, Date fechaEsperada, Date fechaEntrega, String estado, String comentarios, int idCliente) {
+    public Pedido(int idPedido, int codigoPedido, Date fechaPedido, Date fechaEsperada, Date fechaEntrega, String estado, String comentarios, int idCliente) {
         this.idPedido = idPedido;
         this.codigoPedido = codigoPedido;
         this.fechaPedido = fechaPedido;
@@ -25,7 +25,7 @@ public class Pedido {
     }
 
     // Constructor sin idPedido
-    public Pedido(String codigoPedido, Date fechaPedido, Date fechaEsperada, Date fechaEntrega, String estado, String comentarios, int idCliente) {
+    public Pedido(int codigoPedido, Date fechaPedido, Date fechaEsperada, Date fechaEntrega, String estado, String comentarios, int idCliente) {
         this.codigoPedido = codigoPedido;
         this.fechaPedido = fechaPedido;
         this.fechaEsperada = fechaEsperada;
@@ -48,11 +48,11 @@ public class Pedido {
         this.idPedido = idPedido;
     }
 
-    public String getCodigoPedido() {
+    public int getCodigoPedido() {
         return codigoPedido;
     }
 
-    public void setCodigoPedido(String codigoPedido) {
+    public void setCodigoPedido(int codigoPedido) {
         this.codigoPedido = codigoPedido;
     }
 
