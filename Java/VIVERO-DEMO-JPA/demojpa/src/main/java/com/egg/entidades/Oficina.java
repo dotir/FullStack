@@ -45,11 +45,11 @@ public class Oficina {
     }
 
     public String getCodigo_oficina() {
-        return codigo_postal;
+        return codigo_oficina;
     }
 
-    public void setCodigo_oficina(String codigo_postal) {
-        this.codigo_postal = codigo_postal;
+    public void setCodigo_oficina(String codigo_oficina) {
+        this.codigo_oficina = codigo_oficina;
     }
 
     public String getCodigo_postal() {
