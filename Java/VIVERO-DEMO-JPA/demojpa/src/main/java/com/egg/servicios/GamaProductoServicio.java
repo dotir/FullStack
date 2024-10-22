@@ -3,6 +3,8 @@ package com.egg.servicios;
 import com.egg.entidades.GamaProducto;
 import com.egg.persistencia.GamaProductoDAO;
 
+import java.util.List;
+
 public class GamaProductoServicio {
 
     private final GamaProductoDAO daoGamaProducto;
@@ -48,6 +50,17 @@ public class GamaProductoServicio {
             }
         } catch (Exception e) {
             System.out.println(e.toString() + " No se pudo modificar la gama de producto.");
+        }
+    }
+
+    public void listarGamasProducto() throws Exception {
+        List<GamaProducto> todasGamas = daoGamaProducto.listarTodos();
+        imprimirLista(todasGamas);
+    }
+
+    private void imprimirLista(List<GamaProducto> gamas) {
+        for (GamaProducto gama : gamas) {
+            System.out.println(gama.getId_gama() + " - " + gama.getGama());
         }
     }
 

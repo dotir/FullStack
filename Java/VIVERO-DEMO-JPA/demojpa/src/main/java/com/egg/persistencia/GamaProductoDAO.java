@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.util.List;
+
 public class GamaProductoDAO {
 
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPU");
@@ -24,6 +26,10 @@ public class GamaProductoDAO {
         em.getTransaction().begin();
         em.merge(gamaProducto);
         em.getTransaction().commit();
+    }
+
+    public List<GamaProducto> listarTodos() throws Exception {
+        return em.createQuery("SELECT g FROM GamaProducto g", GamaProducto.class).getResultList();
     }
 
 }

@@ -4,6 +4,8 @@ import com.egg.entidades.Cliente;
 import com.egg.entidades.Empleado;
 import com.egg.persistencia.ClienteDAO;
 
+import java.util.List;
+
 public class ClienteServicio {
 
     private final ClienteDAO daoCliente;
@@ -43,4 +45,33 @@ public class ClienteServicio {
     public Cliente buscarClientePorId(int idCliente) {
         return daoCliente.buscarClientePorId(idCliente);
     }
+
+    public void listarClientes() throws Exception {
+        List<Cliente> todosClientes = daoCliente.listarTodos();
+        imprimirLista(todosClientes);
+    }
+
+    public void listarClientes(String nombreRecibido) throws Exception {
+        List<Cliente> clientesNombre = daoCliente.listarClientesPorNombre(nombreRecibido);
+        imprimirLista(clientesNombre);
+    }
+
+    private void imprimirLista(List<Cliente> clientes) {
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente.getId_cliente() + " - " + cliente.getNombre_cliente() + " - " + cliente.getApellido_contacto());
+        }
+    }
+
+    public void listarClientesPorCiudad(String ciudad) throws Exception {
+        List<Cliente> clientesCiudad = daoCliente.listarClientesPorCiudad(ciudad);
+        System.out.println("Clientes en la ciudad de " + ciudad + ":");
+        imprimirLista(clientesCiudad);
+    }
+
+    public void listarClientesPorEmpleado(int idEmpleado) throws Exception {
+        List<Cliente> clientes = daoCliente.listarClientesPorEmpleado(idEmpleado);
+        System.out.println("Clientes del empleado con ID " + idEmpleado + ":");
+        imprimirLista(clientes);
+    }
+    
 }

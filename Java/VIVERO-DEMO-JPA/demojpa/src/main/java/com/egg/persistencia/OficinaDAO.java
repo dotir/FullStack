@@ -1,5 +1,7 @@
 package com.egg.persistencia;
 
+import java.util.List;
+
 import com.egg.entidades.Oficina;
 
 import jakarta.persistence.EntityManager;
@@ -20,5 +22,8 @@ public class OficinaDAO {
         em.getTransaction().commit();
     }
 
+    public List<Oficina> listarTodas() throws Exception {
+        return em.createQuery("SELECT o FROM Oficina o",Oficina.class).getResultList();
+    }
 
 }
