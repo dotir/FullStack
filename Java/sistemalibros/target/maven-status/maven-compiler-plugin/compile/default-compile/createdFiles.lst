@@ -1,0 +1,10 @@
+com\egg\entidades\Editorial.class
+com\egg\servicios\LibroServicio.class
+com\egg\persistencias\EditorialDAO.class
+com\egg\servicios\EditorialServicio.class
+com\egg\servicios\AutorServicio.class
+com\egg\entidades\Autor.class
+com\egg\entidades\Libro.class
+com\egg\persistencias\LibroDAO.class
+com\egg\Main.class
+com\egg\persistencias\AutorDAO.class
