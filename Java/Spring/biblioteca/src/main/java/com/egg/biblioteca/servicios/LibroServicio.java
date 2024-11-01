@@ -29,7 +29,7 @@ public class LibroServicio {
     private EditorialRepositorio editorialRepositorio;
 
     @Transactional
-    public void crearLibro(String titulo, Integer anio, Integer ejemplares, Long idAutor, Long idEditorial) throws MiException {
+    public void crearLibro(Long isbn, String titulo, Integer ejemplares, Long idAutor, Long idEditorial) throws MiException {
 
         validar(titulo, titulo, idAutor, idEditorial);
         // Buscar Autor y Editorial usando los repositorios
@@ -39,6 +39,7 @@ public class LibroServicio {
 
         // Crear una instancia de Libro y setear sus atributos
         Libro libro = new Libro();
+        libro.setIsbn(isbn);
         libro.setTitulo(titulo);
         libro.setEjemplares(ejemplares);
         libro.setAlta(new Date());
