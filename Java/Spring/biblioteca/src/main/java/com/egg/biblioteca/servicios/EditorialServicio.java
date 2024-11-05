@@ -2,6 +2,7 @@ package com.egg.biblioteca.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class EditorialServicio {
     @Transactional
     public void modificarEditorial(String nombre, String id) throws MiException {
         validar(nombre);
-        Editorial editorial = editorialRepositorio.findById(Long.parseLong(id)).orElse(null);
+        Editorial editorial = editorialRepositorio.findById(UUID.fromString(id)).orElse(null);
         if (editorial != null) {
             editorial.setNombre(nombre);
             editorialRepositorio.save(editorial);

@@ -3,6 +3,7 @@ package com.egg.biblioteca.servicios;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class AutorServicio {
     @Transactional
     public void modificarAutor(String nombre, String id) throws MiException {
         validar(nombre);
-        Optional<Autor> respuesta = autorRepositorio.findById(Long.parseLong(id));
+        Optional<Autor> respuesta = autorRepositorio.findById(UUID.fromString(id));
         if (respuesta.isPresent()) {
             Autor autor = respuesta.get();
 
@@ -55,5 +56,11 @@ public class AutorServicio {
             throw new MiException("el nombre no puede ser nulo o estar vacío");
         }
     }
+
+     @Transactional(readOnly = true)
+    public Autor  getOne(String id){
+        return autorRepositorio.getReferenceById(UUID.fromString(id));
+    }
+
 
 }
