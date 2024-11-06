@@ -77,18 +77,21 @@
                     <tr>
                         <th scope="col">Id del Libro</th>
                         <th scope="col">Nombre del Libro</th>
+                        <th scope="col">Ejemplares</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Editorial</th>
                         <th scope="col">Acciones</th>
 
                     </tr>
                 </thead>
                 <tbody th:each="libro : ${libros}"> 
                     <tr>
-                        <th scope="row" th:text="${libro.id}"></th>
-                        <td th:text="${libro.nombre}"></td>
-                        <td>
-                            <a th:href= "@{/libro/modificar/__${libro.id}__}"><i class="fas fa-feather-alt">  </i> Modificar </a>
-                        </td>
-
+                        <th scope="row" th:text="${libro.isbn}"></th>
+                        <td scope="row" th:text="${libro.titulo}"></td>
+                        <td scope="row" th:text="${libro.ejemplares}"></td>
+                        <td scope="row" th:text="${libro.autor.nombre}"></td>
+                        <td scope="row" th:text="${libro.editorial.nombre}"></td>
+                        <td scope="row" ><a th:href= "@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt">  </i> Modificar </a></td>
                     </tr>
 
                 </tbody>
