@@ -1,13 +1,19 @@
 package com.egg.biblioteca.entidades;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.Date;
-
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 public class Libro {
     
@@ -26,57 +32,4 @@ public class Libro {
 
     @ManyToOne
     private Editorial editorial;
-
-    //constructor vacio
-    public Libro() {
-    }
-
-    //getters y setters
-    public Long getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(Long isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public Integer getEjemplares() {
-        return ejemplares;
-    }
-
-    public void setEjemplares(Integer ejemplares) {
-        this.ejemplares = ejemplares;
-    }
-
-    public Date getAlta() {
-        return alta;
-    }
-
-    public void setAlta(Date alta) {
-        this.alta = alta;
-    }
-
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
-
-    public Editorial getEditorial() {
-        return editorial;
-    }
-
-    public void setEditorial(Editorial editorial) {
-        this.editorial = editorial;
-    }
 }
