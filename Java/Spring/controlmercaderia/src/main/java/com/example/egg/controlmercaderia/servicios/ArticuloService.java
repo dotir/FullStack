@@ -1,12 +1,13 @@
 package com.example.egg.controlmercaderia.servicios;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.egg.controlmercaderia.entidades.Articulo;
 import com.example.egg.controlmercaderia.repositorios.ArticuloRepository;
-
-import java.util.List;
 
 @Service
 public class ArticuloService {
@@ -22,4 +23,7 @@ public class ArticuloService {
         return articuloRepository.save(articulo);
     }
 
+    public Optional<Articulo> findByNroArticulo(Integer nroArticulo) {
+        return articuloRepository.findByNroArticulo(nroArticulo);
+    }
 }

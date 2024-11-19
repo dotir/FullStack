@@ -1,14 +1,14 @@
 package com.example.egg.controlmercaderia.entidades;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Column;
 
 @Entity
 @Getter
@@ -19,7 +19,7 @@ public class Fabrica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String idFabrica;
+    private Long idFabrica; // Changed from String to Long
 
     @Column(nullable = false)
     private String nombreFabrica;

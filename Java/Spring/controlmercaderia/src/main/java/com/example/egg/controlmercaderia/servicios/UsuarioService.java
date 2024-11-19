@@ -7,6 +7,7 @@ import com.example.egg.controlmercaderia.entidades.Usuario;
 import com.example.egg.controlmercaderia.repositorios.UsuarioRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -22,4 +23,7 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    public Optional<Usuario> findByUsername(String username) {
+        return usuarioRepository.findByUsername(username);
+    }
 }

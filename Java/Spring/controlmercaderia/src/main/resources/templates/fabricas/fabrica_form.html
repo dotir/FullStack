@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Fábrica Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <!-- Include the navigation bar -->
+    <th:block th:replace="~{fragments/navbar.html}"></th:block>
+    <div class="container">
+        <h1 class="mt-5" th:text="${isEditing} ? 'Modificar Fábrica' : 'Nueva Fábrica'"></h1>
+        <form th:action="@{${isEditing} ? '/fabricas/modificar' : '/fabricas'}" method="post" class="form-group">
+            <input type="hidden" name="idFabrica" th:value="${fabrica.idFabrica}" />
+            <div class="form-group">
+                <label for="nombreFabrica">Nombre de Fábrica:</label>
+                <input type="text" class="form-control" id="nombreFabrica" name="nombreFabrica"
+                    th:value="${fabrica.nombreFabrica}" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Fábrica</button>
+            <a href="/fabricas" class="btn btn-secondary">Cancelar</a>
+        </form>
+
+        <p th:text="${success}"></p>
+        <p th:text="${error}"></p>
+    </div>
+</body>
+
+</html>

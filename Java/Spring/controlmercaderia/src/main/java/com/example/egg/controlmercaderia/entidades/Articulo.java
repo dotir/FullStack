@@ -1,10 +1,10 @@
 package com.example.egg.controlmercaderia.entidades;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +20,7 @@ public class Articulo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String idArticulo;
+    private Long idArticulo; // Changed from String to Long
 
     @Column(unique = true, nullable = false)
     private Integer nroArticulo;

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Include the navigation bar -->
+    <th:block th:replace="~{fragments/navbar.html}"></th:block>
+    <div class="container">
+        <h1 class="mt-5">Lista de Usuarios</h1>
+
+        <div th:if="${success != null}" class="alert alert-success" role="alert" th:text="${success}"></div>
+        <div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.username}"></td>
+                    <td th:text="${usuario.nombre}"></td>
+                    <td th:text="${usuario.apellido}"></td>
+                    <td>
+                        <a class="btn btn-warning" th:href="@{/usuarios/modificar(username=${usuario.username})}">Actualizar</a>
+                        <a class="btn btn-danger" th:href="@{/usuarios/eliminar(username=${usuario.username})}" 
+                           onclick="return confirm('¿Está seguro de que desea eliminar este usuario?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-primary" th:href="@{/usuarios/nuevo}">Agregar Usuario</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

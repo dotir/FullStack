@@ -1,12 +1,13 @@
 package com.example.egg.controlmercaderia.servicios;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.egg.controlmercaderia.entidades.Fabrica;
 import com.example.egg.controlmercaderia.repositorios.FabricaRepository;
-
-import java.util.List;
 
 @Service
 public class FabricaService {
@@ -22,4 +23,7 @@ public class FabricaService {
         return fabricaRepository.save(fabrica);
     }
 
+    public Optional<Fabrica> findById(Long id) {
+        return fabricaRepository.findById(id);
+    }
 }
