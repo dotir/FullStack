@@ -22,6 +22,8 @@
                     <th>Número de Artículo</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
+                    <th>Fabrica</th>
+                    <th>Imagen</th> <!-- New header for the image -->
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -30,6 +32,18 @@
                     <td th:text="${articulo.nroArticulo}"></td>
                     <td th:text="${articulo.nombreArticulo}"></td>
                     <td th:text="${articulo.descripcionArticulo}"></td>
+                    <td th:text="${articulo.fabrica.nombreFabrica}"></td>
+                    <td>
+                        <button class="btn btn-info" 
+                                th:if="${articulo.imagen != null}" 
+                                type="button" 
+                                data-toggle="modal" 
+                                data-target="#imageModal"
+                                th:attr="data-image=${articulo.imagenString}" 
+                                onclick="showImage(this)">
+                            Mostrar Imagen
+                        </button>
+                    </td>
                     <td>
                         <a class="btn btn-warning" th:href="@{/articulos/modificar(nroArticulo=${articulo.nroArticulo})}">Actualizar</a>
                         <a class="btn btn-danger" th:href="@{/articulos/eliminar(nroArticulo=${articulo.nroArticulo})}" 
@@ -40,6 +54,30 @@
         </table>
         <a class="btn btn-primary" th:href="@{/articulos/nuevo}">Agregar Artículo</a>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Imagen Artículo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Imagen Articulo" style="width:100%; height:auto;" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function showImage(button) {
+        var imageData = button.getAttribute('data-image');
+        document.getElementById('modalImage').src = imageData;
+    }
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
