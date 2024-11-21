@@ -68,9 +68,16 @@ public class ArticuloControlador {
     public String mostrarFormularioModificar(@RequestParam Integer nroArticulo, Model model) {
         Articulo articulo = articuloService.findByNroArticulo(nroArticulo)
                 .orElseThrow(() -> new RuntimeException("Artículo no encontrado"));
+                
+        // Add the article to the model
         model.addAttribute("articulo", articulo);
-        model.addAttribute("isEditing", true); // New attribute for editing
-        return "articulos/articulo_form"; // Referring to articulo_form.html
+        model.addAttribute("isEditing", true);
+        
+        // Load and add the list of fábricas
+        List<Fabrica> fabricas = fabricaService.findAll();
+        model.addAttribute("fabricas", fabricas);
+        
+        return "articulos/articulo_form";
     }
 
     @GetMapping("/cliente") // New endpoint for client view

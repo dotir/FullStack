@@ -34,7 +34,7 @@
                     <option th:each="fabrica : ${fabricas}" 
                             th:value="${fabrica.idFabrica}"
                             th:text="${fabrica.nombreFabrica}" 
-                            th:selected="${fabrica.idFabrica == articulo.fabrica.idFabrica}">
+                            th:selected="${articulo.fabrica != null and fabrica.idFabrica == articulo.fabrica.idFabrica}">
                     </option>
                 </select>
             </div>

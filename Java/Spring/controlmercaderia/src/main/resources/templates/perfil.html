@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Usuario</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/portalusuario">Volver</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Mi Perfil</h1>
+        
+        <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+        <form th:action="@{/perfil}" method="post">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" class="form-control" th:value="${usuario.username}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" th:value="${usuario.nombre}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" th:value="${usuario.apellido}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Nueva Contraseña (opcional):</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar Nueva Contraseña:</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

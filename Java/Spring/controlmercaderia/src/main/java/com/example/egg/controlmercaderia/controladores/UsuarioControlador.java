@@ -36,9 +36,13 @@ public class UsuarioControlador {
     }
     
     @GetMapping("/modificar")
-    public String mostrarFormularioModificar(@RequestParam String username, Model model) {
+    public String mostrarFormularioModificar(@RequestParam String username, Model model, RedirectAttributes redirectAttributes) {
         Usuario usuario = usuarioService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                .orElse(null);
+        if (usuario == null) {
+            redirectAttributes.addFlashAttribute("error", "Usuario no encontrado.");
+            return "redirect:/usuarios"; // Redirect to user list with error message
+        }
         model.addAttribute("usuario", usuario);
         model.addAttribute("isEditing", true); // New attribute for editing
         return "usuarios/usuario_form"; // Referring to usuario_form.html
@@ -46,19 +50,35 @@ public class UsuarioControlador {
 
     @PostMapping
     public String crearUsuario(@RequestParam String username, 
+                               @RequestParam String password, // Added password parameter
+                               @RequestParam String confirmPassword, // Added confirmation password parameter
                                @RequestParam String nombre, 
                                @RequestParam String apellido, 
-                               RedirectAttributes redirectAttributes) {
+                               Model model) { // Change RedirectAttributes to Model
+        if (!password.equals(confirmPassword)) {
+            model.addAttribute("error", "Las contraseñas no coinciden.");
+            Usuario usuario = new Usuario();
+            usuario.setUsername(username);
+            usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            model.addAttribute("usuario", usuario); // Add the input to keep them on error
+            return "usuarios/usuario_form"; // Return to the form view with error message
+        }
         if (usuarioService.findByUsername(username).isPresent()) {
-            redirectAttributes.addFlashAttribute("error", "El usuario ya existe.");
-            return "redirect:/usuarios/nuevo"; // Redirect to new user form with error message
+            model.addAttribute("error", "El usuario ya existe.");
+            Usuario usuario = new Usuario();
+            usuario.setUsername(username);
+            usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            model.addAttribute("usuario", usuario); // Add the input to keep them on error
+            return "usuarios/usuario_form"; // Return to the form view with error message
         }
         Usuario usuario = new Usuario();
         usuario.setUsername(username);
+        usuario.setPassword(password); // Set the password
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
-        usuarioService.save(usuario);
-        redirectAttributes.addFlashAttribute("success", "Usuario creado exitosamente.");
+        usuarioService.save(usuario); // Password will be hashed in the save method
         return "redirect:/usuarios"; // Redirect to user list
     }
 
