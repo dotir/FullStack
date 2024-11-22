@@ -100,7 +100,7 @@ public class ArticuloControlador {
     public String crearArticulo(@RequestParam Integer nroArticulo, 
                                 @RequestParam String nombreArticulo, 
                                 @RequestParam String descripcionArticulo, 
-                                @RequestParam Long fabricaId,
+                                @RequestParam String fabricaId,
                                 @RequestParam("imagen") MultipartFile imagenFile, 
                                 RedirectAttributes redirectAttributes) {
         Articulo articulo = new Articulo();
@@ -129,7 +129,7 @@ public class ArticuloControlador {
     public String actualizarArticulo(   @RequestParam Integer nroArticulo, 
                                         @RequestParam String nombreArticulo, 
                                         @RequestParam String descripcionArticulo, 
-                                        @RequestParam Long fabricaId,
+                                        @RequestParam String fabricaId,
                                         @RequestParam(value = "imagen", required = false) MultipartFile imagenFile, // Optional parameter
                                         RedirectAttributes redirectAttributes) {
         Articulo articulo = articuloService.findByNroArticulo(nroArticulo)
@@ -154,5 +154,21 @@ public class ArticuloControlador {
         articuloService.save(articulo);
         redirectAttributes.addFlashAttribute("success", "Artículo actualizado exitosamente.");
         return "redirect:/articulos"; // Redirect to article list
+    }
+
+    // ArticuloControlador.java - Add new endpoint
+    @GetMapping("/eliminar")
+    public String eliminarArticulo(@RequestParam Integer nroArticulo, RedirectAttributes redirectAttributes) {
+        try {
+            Articulo articulo = articuloService.findByNroArticulo(nroArticulo)
+                    .orElseThrow(() -> new RuntimeException("Artículo no encontrado"));
+            
+            articuloService.delete(articulo);
+            redirectAttributes.addFlashAttribute("success", "Artículo eliminado exitosamente");
+            
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar el artículo: " + e.getMessage());
+        }
+        return "redirect:/articulos";
     }
 }

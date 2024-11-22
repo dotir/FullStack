@@ -23,7 +23,11 @@ public class FabricaService {
         return fabricaRepository.save(fabrica);
     }
 
-    public Optional<Fabrica> findById(Long id) {
+    public Optional<Fabrica> findById(String id) {
         return fabricaRepository.findById(id);
+    }
+
+    public void delete(Fabrica fabrica) {
+        fabricaRepository.delete(fabrica);
     }
 }

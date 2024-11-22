@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.egg.controlmercaderia.entidades.Fabrica;
+import com.example.egg.controlmercaderia.servicios.ArticuloService;
 import com.example.egg.controlmercaderia.servicios.FabricaService;
 
 @Controller
@@ -20,6 +21,9 @@ public class FabricaControlador {
 
     @Autowired
     private FabricaService fabricaService;
+
+    @Autowired
+    private ArticuloService articuloService;
 
     @GetMapping
     public String listarFabricas(Model model) {
@@ -36,7 +40,7 @@ public class FabricaControlador {
     }
 
     @GetMapping("/modificar")
-    public String mostrarFormularioModificar(@RequestParam Long idFabrica, Model model) {
+    public String mostrarFormularioModificar(@RequestParam String idFabrica, Model model) {
         Fabrica fabrica = fabricaService.findById(idFabrica)
                 .orElseThrow(() -> new RuntimeException("Fábrica no encontrada"));
         model.addAttribute("fabrica", fabrica);
@@ -55,7 +59,7 @@ public class FabricaControlador {
     }
 
     @PostMapping("/modificar")
-    public String actualizarFabrica(@RequestParam Long idFabrica, 
+    public String actualizarFabrica(@RequestParam String idFabrica, 
                                      @RequestParam String nombreFabrica,
                                      RedirectAttributes redirectAttributes) {
         Fabrica fabrica = fabricaService.findById(idFabrica)
@@ -65,5 +69,27 @@ public class FabricaControlador {
         fabricaService.save(fabrica);
         redirectAttributes.addFlashAttribute("success", "Fábrica actualizada exitosamente.");
         return "redirect:/fabricas"; // Redirect to factory list
+    }
+
+    @GetMapping("/eliminar")
+    public String eliminarFabrica(@RequestParam String idFabrica, RedirectAttributes redirectAttributes) {
+        try {
+            Fabrica fabrica = fabricaService.findById(idFabrica)
+                    .orElseThrow(() -> new RuntimeException("Fábrica no encontrada"));
+                
+            // Check if factory has articles before deleting
+            if (articuloService.existsByFabricaId(idFabrica)) {
+                redirectAttributes.addFlashAttribute("error", 
+                    "No se puede eliminar la fábrica porque tiene artículos asociados");
+                return "redirect:/fabricas";
+            }
+                
+            fabricaService.delete(fabrica);
+            redirectAttributes.addFlashAttribute("success", "Fábrica eliminada exitosamente");
+                
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar la fábrica: " + e.getMessage());
+        }
+        return "redirect:/fabricas";
     }
 }

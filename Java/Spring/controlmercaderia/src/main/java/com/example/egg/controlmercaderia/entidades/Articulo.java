@@ -1,13 +1,13 @@
 package com.example.egg.controlmercaderia.entidades;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob; // Import for Lob
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Transient;
+import jakarta.persistence.Transient; // Import for Lob
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +21,9 @@ import lombok.Setter;
 public class Articulo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idArticulo;
+    @UuidGenerator
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String idArticulo;
 
     @Column(unique = true, nullable = false)
     private Integer nroArticulo;

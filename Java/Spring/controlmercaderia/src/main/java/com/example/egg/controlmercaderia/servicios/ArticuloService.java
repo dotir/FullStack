@@ -26,4 +26,12 @@ public class ArticuloService {
     public Optional<Articulo> findByNroArticulo(Integer nroArticulo) {
         return articuloRepository.findByNroArticulo(nroArticulo);
     }
+
+    public void delete(Articulo articulo) {
+        articuloRepository.delete(articulo);
+    }
+
+    public boolean existsByFabricaId(String fabricaId) {
+        return articuloRepository.existsByFabricaIdFabrica(fabricaId);
+    }
 }

@@ -1,18 +1,9 @@
 package com.example.egg.controlmercaderia.entidades;
 
+import jakarta.persistence.*;
+import lombok.*;
 import com.example.egg.controlmercaderia.enumeraciones.Rol;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Getter
@@ -22,8 +13,10 @@ import lombok.Setter;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idUsuario; // Changed from String to Long
+    @GeneratedValue
+    @UuidGenerator
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String idUsuario;
 
     @Column(unique = true, nullable = false)
     private String username;
@@ -31,13 +24,12 @@ public class Usuario {
     @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable = false)
+    @Column(nullable = false)  
     private String apellido;
 
     @Column(nullable = false)
-    private String password; // Added password field
+    private String password;
 
     @Enumerated(EnumType.STRING)
     private Rol rol = Rol.USER;
-
 }

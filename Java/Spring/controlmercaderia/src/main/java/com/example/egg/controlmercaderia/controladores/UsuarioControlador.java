@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.egg.controlmercaderia.entidades.Usuario;
+import com.example.egg.controlmercaderia.enumeraciones.Rol;
 import com.example.egg.controlmercaderia.servicios.UsuarioService;
 
 @Controller
@@ -95,5 +96,26 @@ public class UsuarioControlador {
         usuarioService.save(usuario);
         redirectAttributes.addFlashAttribute("success", "Usuario actualizado exitosamente.");
         return "redirect:/usuarios"; // Redirect to user list
+    }
+
+    @GetMapping("/eliminar")
+    public String eliminarUsuario(@RequestParam String username, RedirectAttributes redirectAttributes) {
+        try {
+            Usuario usuario = usuarioService.findByUsername(username)
+                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+            
+            // Don't allow deleting the last admin
+            if (usuario.getRol() == Rol.ADMIN && usuarioService.countAdminUsers() <= 1) {
+                redirectAttributes.addFlashAttribute("error", "No se puede eliminar el último administrador");
+                return "redirect:/usuarios";
+            }
+
+            usuarioService.deleteByUsername(username);
+            redirectAttributes.addFlashAttribute("success", "Usuario eliminado exitosamente");
+            
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar el usuario: " + e.getMessage());
+        }
+        return "redirect:/usuarios";
     }
 }

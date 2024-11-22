@@ -1,9 +1,9 @@
 package com.example.egg.controlmercaderia.entidades;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,8 +18,9 @@ import lombok.Setter;
 public class Fabrica {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idFabrica; // Changed from String to Long
+    @UuidGenerator
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String idFabrica;
 
     @Column(nullable = false)
     private String nombreFabrica;

@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.egg.controlmercaderia.entidades.Usuario;
+import com.example.egg.controlmercaderia.enumeraciones.Rol;
 import com.example.egg.controlmercaderia.repositorios.UsuarioRepository;
 
 @Service
@@ -33,5 +34,15 @@ public class UsuarioService {
 
     public Optional<Usuario> findByUsername(String username) {
         return usuarioRepository.findByUsername(username);
+    }
+
+    public void deleteByUsername(String username) {
+        Usuario usuario = findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        usuarioRepository.delete(usuario);
+    }
+
+    public long countAdminUsers() {
+        return usuarioRepository.countByRol(Rol.ADMIN);
     }
 }
